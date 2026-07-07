@@ -14,7 +14,6 @@ A full-stack production-ready e-commerce platform built with the MERN stack.
 
 Welcome to the eCommerce Platform Project built using the MERN (MongoDB, Express.js, React, Node.js) Stack. This project provides a robust and full-featured online shopping platform with various functionalities to enhance the user experience.
 
-**Live App Demo** : [https://mern-shop-abxs.onrender.com/](https://mern-shop-abxs.onrender.com/)</br>
 Note: Please be aware that Render's free tier will automatically shut down after 15 minutes of inactivity. Consequently, the first request after reactivation may experience a delay, but subsequent requests will be faster.
 
 ## Demo User Logins
@@ -103,22 +102,4 @@ To create a production build for the frontend:
 cd frontend
 npm run build
 ```
-
-## Demo User Logins
-
-- **Live Admin Dashboard Login:**:
-
-  - Email: admin@gmail.com
-  - Password: Password123
-
-- **Live Customer Logins:**:
-
-    - Email: johndoe@gmail.com
-    - Password: Password123
-  - Alice Smith
-    - Email: alice@email.com
-    - Password: alice123
-
-Feel free to explore and customize this eCommerce platform for your specific needs.
-
 ## Thank You!
