@@ -105,7 +105,7 @@ export default function AdminProducts() {
     const fd = new FormData();
     Object.entries(form).forEach(([k, v]) => fd.append(k, v));
     files.forEach((f) => fd.append("images", f));
-    if (removeImages.length)
+    if (removeImages?.length)
       fd.append("removeImages", JSON.stringify(removeImages));
     const res = editProduct
       ? await dispatch(updateProduct({ id: editProduct._id, formData: fd }))
@@ -194,7 +194,7 @@ export default function AdminProducts() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-zinc-50">
-                  {items.length === 0 ? (
+                  {items?.length === 0 ? (
                     <tr>
                       <td
                         colSpan={6}
@@ -421,7 +421,7 @@ export default function AdminProducts() {
                 >
                   <RiImageAddLine size={18} /> Click to upload images (max 5)
                 </button>
-                {previews.length > 0 && (
+                {previews?.length > 0 && (
                   <div className="flex gap-2 mt-2 flex-wrap">
                     {previews.map((src, i) => (
                       <img

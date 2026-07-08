@@ -69,7 +69,7 @@ export default function HomePage() {
       </section>
 
       {/* Categories */}
-      {categories.length > 0 && (
+      {categories?.length > 0 && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-14">
           <div className="flex items-center justify-between mb-7">
             <h2 className="text-xl font-bold text-zinc-900">
@@ -83,7 +83,7 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-            {categories.slice(0, 6).map((cat) => (
+            {categories?.slice(0, 6).map((cat) => (
               <Link
                 key={cat._id}
                 to={`/products?category=${cat._id}`}

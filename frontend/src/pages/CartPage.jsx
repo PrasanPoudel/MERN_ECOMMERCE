@@ -36,7 +36,7 @@ export default function CartPage() {
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Cart" }]} />
       <h1 className="text-2xl font-bold text-zinc-900 mb-6">Shopping Cart</h1>
 
-      {items.length === 0 ? (
+      {items?.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-24 text-center">
           <div className="w-20 h-20 bg-zinc-100 rounded-2xl flex items-center justify-center mb-5">
             <RiShoppingBag3Line size={36} className="text-zinc-400" />

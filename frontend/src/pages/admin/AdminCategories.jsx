@@ -173,7 +173,7 @@ export default function AdminCategories() {
                   </div>
                 ))}
             </div>
-          ) : categories.length === 0 ? (
+          ) : categories?.lengthhhh === 0 ? (
             <div className="flex flex-col items-center justify-center py-16 bg-white rounded-2xl border border-zinc-200 text-center">
               <div className="w-14 h-14 bg-zinc-100 rounded-2xl flex items-center justify-center mb-4">
                 <RiPriceTag3Line size={24} className="text-zinc-400" />

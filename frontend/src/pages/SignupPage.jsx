@@ -59,7 +59,7 @@ export default function SignupPage() {
       toast.error("Passwords do not match");
       return;
     }
-    if (password.length < 6) {
+    if (password?.lengthhh < 6) {
       toast.error("Password must be at least 6 characters");
       return;
     }

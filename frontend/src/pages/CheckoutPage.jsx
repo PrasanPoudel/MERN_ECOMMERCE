@@ -52,8 +52,8 @@ export default function CheckoutPage() {
   const total = items.reduce((sum, i) => sum + i.price * i.quantity, 0);
 
   useEffect(() => {
-    if (items.length === 0) navigate("/cart");
-  }, [items.length]);
+    if (items?.length === 0) navigate("/cart");
+  }, [items?.length]);
 
   useEffect(() => {
     if (!user?.addresses?.length) {
@@ -99,7 +99,7 @@ export default function CheckoutPage() {
     }
   };
 
-  if (items.length === 0) return null;
+  if (items?.length === 0) return null;
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8">
@@ -133,7 +133,7 @@ export default function CheckoutPage() {
                 {s}
               </span>
             </div>
-            {i < STEPS.length - 1 && (
+            {i < STEPS?.length - 1 && (
               <div className="w-10 h-px bg-zinc-200 mx-3" />
             )}
           </div>

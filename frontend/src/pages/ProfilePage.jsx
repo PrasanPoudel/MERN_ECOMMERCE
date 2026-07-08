@@ -100,7 +100,7 @@ export default function ProfilePage() {
     const data = {};
     if (name !== user.name) data.name = name;
     if (password) data.password = password;
-    if (!Object.keys(data).length) return;
+    if (!Object.keys(data)?.length) return;
     const res = await dispatch(updateProfile(data));
     if (res.meta.requestStatus === "fulfilled") {
       toast.success("Profile updated");
