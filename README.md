@@ -18,7 +18,7 @@ Note: Please be aware that Render's free tier will automatically shut down after
 
 ## Live Website
 
-[https://mern-ecommerce-prasanpoudel.vercel.app](https://mern-ecommerce-prasanpoudel.vercel.app/)
+[https://mern-ecommerce-frontend-hp3s.onrender.com](https://mern-ecommerce-frontend-hp3s.onrender.com)
 
 ## Demo User Logins
 
