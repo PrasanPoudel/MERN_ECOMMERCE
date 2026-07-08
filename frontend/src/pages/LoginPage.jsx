@@ -4,6 +4,7 @@ import { login, clearError } from "../store/slices/authSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { fetchCart } from "../store/slices/cartSlice";
 import toast from "react-hot-toast";
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 const Req = () => <span className="text-red-500 ml-0.5">*</span>;
 
@@ -12,11 +13,20 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const { loading, error } = useSelector((s) => s.auth);
   const [form, setForm] = useState({ email: "", password: "" });
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(clearError());
-    const res = await dispatch(login(form));
+
+    const email = form.email.trim();
+    const password = form.password.trim();
+
+    if (!email || !password) {
+      toast.error("Please enter your email and password");
+      return;
+    }
+    const res = await dispatch(login({ email, password }));
     if (res.meta.requestStatus === "fulfilled") {
       if (res.payload.user.role === "customer") dispatch(fetchCart());
       toast.success(`Welcome back, ${res.payload.user.name}!`);
@@ -30,33 +40,55 @@ export default function LoginPage() {
     <div className="min-h-screen bg-zinc-50 flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">Zentro</h1>
-          <p className="text-zinc-500 mt-1.5 text-sm">Sign in to your account</p>
+          <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">
+            Zentro
+          </h1>
+          <p className="text-zinc-500 mt-1.5 text-sm">
+            Sign in to your account
+          </p>
         </div>
 
         <div className="bg-white rounded-2xl border border-zinc-200 p-8">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-zinc-700 mb-1.5">Email <Req /></label>
+              <label className="block text-sm font-medium text-zinc-700 mb-1.5">
+                Email <Req />
+              </label>
               <input
                 type="email"
                 value={form.email}
-                onChange={(e) => setForm((p) => ({ ...p, email: e.target.value }))}
+                onChange={(e) =>
+                  setForm((p) => ({ ...p, email: e.target.value }))
+                }
                 className="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-zinc-400 focus:ring-2 focus:ring-zinc-100 bg-zinc-50 focus:bg-white transition-all"
                 placeholder="you@example.com"
                 required
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-zinc-700 mb-1.5">Password <Req /></label>
-              <input
-                type="password"
-                value={form.password}
-                onChange={(e) => setForm((p) => ({ ...p, password: e.target.value }))}
-                className="w-full border border-zinc-200 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-zinc-400 focus:ring-2 focus:ring-zinc-100 bg-zinc-50 focus:bg-white transition-all"
-                placeholder="••••••••"
-                required
-              />
+              <label className="block text-sm font-medium text-zinc-700 mb-1.5">
+                Password <Req />
+              </label>
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  value={form.password}
+                  onChange={(e) =>
+                    setForm((p) => ({ ...p, password: e.target.value }))
+                  }
+                  className="w-full border border-zinc-200 rounded-xl px-4 py-2.5 pr-11 text-sm outline-none focus:border-zinc-400 focus:ring-2 focus:ring-zinc-100 bg-zinc-50 focus:bg-white transition-all"
+                  placeholder="••••••••"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((p) => !p)}
+                  className="absolute inset-y-0 right-3 flex items-center text-zinc-500 hover:text-zinc-700"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? <FiEyeOff size={18} /> : <FiEye size={18} />}
+                </button>
+              </div>
             </div>
 
             {error && (
@@ -77,7 +109,12 @@ export default function LoginPage() {
 
         <p className="text-center text-sm text-zinc-500 mt-5">
           Don't have an account?{" "}
-          <Link to="/signup" className="text-zinc-900 font-semibold hover:underline">Sign up</Link>
+          <Link
+            to="/signup"
+            className="text-zinc-900 font-semibold hover:underline"
+          >
+            Sign up
+          </Link>
         </p>
       </div>
     </div>
