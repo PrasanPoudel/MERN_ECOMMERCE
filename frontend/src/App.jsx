@@ -123,7 +123,7 @@ export default function App() {
             background: "#18181b",
             color: "#fafafa",
             borderRadius: "14px",
-            fontSize: "13px",
+            fontSize: "12px",
             fontWeight: "500",
             padding: "12px 16px",
             boxShadow: "0 8px 24px -4px rgb(0 0 0 / 0.2)",
