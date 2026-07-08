@@ -119,7 +119,7 @@ export default function AdminLayout({ children }) {
       </div>
 
       {showLogoutConfirm && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
+        <div className="fixed inset-0 z-60 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
           <div className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl">
             <h3 className="text-lg font-bold text-zinc-900">Log out?</h3>
             <p className="mt-2 text-sm text-zinc-500">

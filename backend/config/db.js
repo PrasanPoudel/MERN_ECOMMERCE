@@ -27,7 +27,9 @@ const seedAdminUsers = async () => {
 };
 
 const connectDB = async () => {
-  const conn = await mongoose.connect(process.env.MONGO_URI);
+  const conn = await mongoose.connect(process.env.MONGO_URI, {
+    dbName: "ecommerce",
+  });
   console.log(`MongoDB Connected: ${conn.connection.host}`);
 
   await seedAdminUsers();
