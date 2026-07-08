@@ -16,17 +16,19 @@ Welcome to the eCommerce Platform Project built using the MERN (MongoDB, Express
 
 Note: Please be aware that Render's free tier will automatically shut down after 15 minutes of inactivity. Consequently, the first request after reactivation may experience a delay, but subsequent requests will be faster.
 
+## Live Website
+
+[https://mern-ecommerce-prasanpoudel.vercel.app](https://mern-ecommerce-prasanpoudel.vercel.app/)
+
 ## Demo User Logins
 
 - **Live Admin Dashboard Login:**:
-
   - Email: admin@gmail.com
   - Password: Password123
 
 - **Live Customer Logins:**:
-
-    - Email: johndoe@gmail.com
-    - Password: Password123
+  - Email: johndoe@gmail.com
+  - Password: Password123
 
 Feel free to explore and customize this eCommerce platform for your specific needs.
 
@@ -47,7 +49,6 @@ cd MERN_ECOMMERCE
 
 3. Create a MongoDB database and obtain your MongoDB URI from [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
 
-
 ### Env Variables
 
 1. Rename the `.env.example` file to `.env` and add the following environment variables:
@@ -63,7 +64,7 @@ CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
 CLOUDINARY_API_KEY=your_cloudinary_api_key
 CLOUDINARY_API_SECRET=your_cloudinary_api_secret
 
-ADMIN_EMAIL=admin_email   
+ADMIN_EMAIL=admin_email
 ADMIN_PASSWORD=admin_password
 ADMIN_NAME=Admin User
 
@@ -102,4 +103,5 @@ To create a production build for the frontend:
 cd frontend
 npm run build
 ```
+
 ## Thank You!
