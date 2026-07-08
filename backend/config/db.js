@@ -5,13 +5,13 @@ const seedAdminUsers = async () => {
   const adminUsers = [
     {
       name: "Prasan Poudel",
-      email: "prasanpoudel@zentor.com",
+      email: "prasanpoudel_admin@zentro.com",
       password: "Password123",
       role: "admin",
     },
     {
       name: "Demo Admin",
-      email: "demo_admin@zentor.com",
+      email: "demo_admin@zentro.com",
       password: "Password123",
       role: "admin",
     },
