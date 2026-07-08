@@ -14,9 +14,6 @@ const generateToken = (id, role) =>
 exports.signup = async (req, res) => {
   const { name, email, password } = req.body;
 
-  if (email === process.env.ADMIN_EMAIL)
-    return res.status(400).json({ message: "Email already in use" });
-
   const exists = await User.findOne({ email });
   if (exists)
     return res.status(400).json({ message: "Email already registered" });
@@ -40,23 +37,6 @@ exports.signup = async (req, res) => {
 exports.login = async (req, res) => {
   const { email, password } = req.body;
 
-  // Admin hardcoded login
-  if (
-    email === process.env.ADMIN_EMAIL &&
-    password === process.env.ADMIN_PASSWORD
-  ) {
-    const token = generateToken("admin", "admin");
-    return res.json({
-      token,
-      user: {
-        _id: "admin",
-        name: process.env.ADMIN_NAME,
-        email,
-        role: "admin",
-      },
-    });
-  }
-
   const user = await User.findOne({ email });
   if (!user || !(await user.matchPassword(password)))
     return res.status(401).json({ message: "Invalid email or password" });
@@ -79,8 +59,8 @@ exports.getProfile = async (req, res) => {
   if (req.user.role === "admin") {
     return res.json({
       _id: "admin",
-      name: process.env.ADMIN_NAME,
-      email: process.env.ADMIN_EMAIL,
+      name: req.user?.name || "Admin",
+      email: req.user?.email,
       role: "admin",
       addresses: [],
     });
