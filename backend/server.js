@@ -33,5 +33,8 @@ app.get('/api/check-server', (req, res) => {
   res.status(200).json({ message: 'Server is up and running!' });
 });
 
+app.get('/', (req, res) => {
+  res.send('Welcome to the E-commerce API');
+});
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
