@@ -38,7 +38,7 @@ export default function AdminOrders() {
 
   return (
     <AdminLayout>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col items-start justify-between sm:flex-row space-y-2 sm:items-center mb-6">
         <div>
           <h1 className="text-xl font-bold text-zinc-900">Orders</h1>
           <p className="text-sm text-zinc-400 mt-0.5">Manage customer orders</p>

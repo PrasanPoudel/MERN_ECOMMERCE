@@ -128,7 +128,7 @@ export default function AdminProducts() {
 
   return (
     <AdminLayout>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col items-start justify-between sm:flex-row space-y-2 sm:items-center mb-6">
         <div>
           <h1 className="text-xl font-bold text-zinc-900">Products</h1>
           <p className="text-sm text-zinc-400 mt-0.5">
@@ -144,7 +144,7 @@ export default function AdminProducts() {
       </div>
 
       <div className="flex gap-3 mb-5 flex-wrap">
-        <div className="flex items-center border border-zinc-200 rounded-xl bg-white flex-1 min-w-[200px] px-3 gap-2">
+        <div className="flex items-center border border-zinc-200 rounded-xl bg-white flex-1 min-w-50 px-3 gap-2">
           <RiSearchLine size={15} className="text-zinc-400 shrink-0" />
           <input
             value={search}

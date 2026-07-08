@@ -80,7 +80,7 @@ export default function AdminOrderDetail() {
                   const done = i <= currentStepIndex;
                   const histEntry = order.statusHistory?.find((h) => h.status === step);
                   return (
-                    <div key={step} className="flex items-start gap-4 relative">
+                    <div key={step} className="flex items-start gap-4 relative p-2">
                       <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 z-10 border-2 transition-colors ${done ? 'bg-zinc-900 border-zinc-900 text-white' : 'bg-white border-zinc-200 text-zinc-400'}`}>
                         {done ? <RiCheckLine size={13} /> : <span className="text-xs font-bold">{i + 1}</span>}
                       </div>
