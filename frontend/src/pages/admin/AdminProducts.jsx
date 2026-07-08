@@ -219,7 +219,7 @@ export default function AdminProducts() {
                               alt=""
                               className="w-10 h-10 object-cover rounded-xl bg-zinc-100 shrink-0"
                             />
-                            <span className="font-medium text-zinc-900 max-w-[180px] truncate">
+                            <span className="font-medium text-zinc-900 max-w-45 truncate">
                               {p.name}
                             </span>
                           </div>
