@@ -80,7 +80,7 @@ export default function ProductsPage() {
             onChange={(e) => handleFilterChange({ sort: e.target.value })}
             className="border border-zinc-200 rounded-xl px-3 py-2 text-sm outline-none bg-white text-zinc-700 hover:border-zinc-300 transition-colors"
           >
-            {SORT_OPTIONS.map((o) => (
+            {SORT_OPTIONS?.map((o) => (
               <option key={o.value} value={o.value}>
                 {o.label}
               </option>
@@ -112,7 +112,7 @@ export default function ProductsPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {Array(9)
                 .fill(0)
-                .map((_, i) => (
+                ?.map((_, i) => (
                   <SkeletonCard key={i} />
                 ))}
             </div>
@@ -131,7 +131,7 @@ export default function ProductsPage() {
           ) : (
             <>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {items.map((p) => (
+                {items?.map((p) => (
                   <ProductCard key={p._id} product={p} />
                 ))}
               </div>

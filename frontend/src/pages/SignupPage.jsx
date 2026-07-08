@@ -85,7 +85,7 @@ export default function SignupPage() {
 
         <div className="bg-white rounded-2xl border border-zinc-200 p-8">
           <form onSubmit={handleSubmit} className="space-y-4">
-            {FIELDS.map(({ key, label, type, placeholder }) => {
+            {FIELDS?.map(({ key, label, type, placeholder }) => {
               const inputType =
                 key === "password"
                   ? showPassword

@@ -51,7 +51,7 @@ export default function OrdersPage() {
         </div>
       ) : (
         <div className="space-y-3">
-          {orders.map((order) => (
+          {orders?.map((order) => (
             <Link
               key={order?._id}
               to={`/orders/${order?._id}`}
@@ -73,7 +73,7 @@ export default function OrdersPage() {
                 </span>
               </div>
               <div className="flex gap-2 mb-4">
-                {order.items?.slice(0, 4).map((item, i) => (
+                {order.items?.slice(0, 4)?.map((item, i) => (
                   <img
                     key={i}
                     src={item.image || "https://placehold.co/60x60"}

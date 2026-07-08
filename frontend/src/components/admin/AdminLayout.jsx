@@ -33,7 +33,7 @@ function SidebarContent({ location, onNav, onLogout }) {
         </span>
       </div>
       <nav className="flex-1 px-3 py-4 space-y-0.5">
-        {NAV.map(({ to, label, icon: Icon }) => {
+        {NAV?.map(({ to, label, icon: Icon }) => {
           const active = location.pathname === to;
           return (
             <Link

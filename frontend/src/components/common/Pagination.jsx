@@ -1,4 +1,4 @@
-import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri';
+import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
 
 export default function Pagination({ page, pages, onPageChange }) {
   if (pages <= 1) return null;
@@ -12,14 +12,14 @@ export default function Pagination({ page, pages, onPageChange }) {
       >
         <RiArrowLeftSLine size={18} />
       </button>
-      {pageNums.map((n) => (
+      {pageNums?.map((n) => (
         <button
           key={n}
           onClick={() => onPageChange(n)}
           className={`w-9 h-9 flex items-center justify-center rounded-xl text-sm font-medium transition-colors ${
             n === page
-              ? 'bg-zinc-900 text-white border border-zinc-900'
-              : 'border border-zinc-200 text-zinc-600 hover:bg-zinc-100'
+              ? "bg-zinc-900 text-white border border-zinc-900"
+              : "border border-zinc-200 text-zinc-600 hover:bg-zinc-100"
           }`}
         >
           {n}

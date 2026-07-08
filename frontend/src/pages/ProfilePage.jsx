@@ -149,7 +149,7 @@ export default function ProfilePage() {
       <h1 className="text-2xl font-bold text-zinc-900 mb-6">My Account</h1>
 
       <div className="flex gap-1 mb-6 bg-zinc-100 p-1 rounded-xl w-fit">
-        {TABS.map(({ key, label, icon: Icon }) => (
+        {TABS?.map(({ key, label, icon: Icon }) => (
           <button
             key={key}
             onClick={() => setTab(key)}
@@ -292,7 +292,7 @@ export default function ProfilePage() {
             >
               <h3 className="font-bold text-zinc-900 text-sm">New Address</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {ADDR_FIELDS.map(
+                {ADDR_FIELDS?.map(
                   ({ key, label, required, full, placeholder }) => (
                     <div key={key} className={full ? "sm:col-span-2" : ""}>
                       <label className="block text-xs font-semibold text-zinc-600 mb-1.5">

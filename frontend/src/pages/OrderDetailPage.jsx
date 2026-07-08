@@ -66,7 +66,7 @@ export default function OrderDetailPage() {
             }}
           />
           <div className="space-y-5">
-            {ORDER_STEPS.map((step, i) => {
+            {ORDER_STEPS?.map((step, i) => {
               const done = i <= currentStepIndex;
               const histEntry = order.statusHistory?.find(
                 (h) => h.status === step,
@@ -108,7 +108,7 @@ export default function OrderDetailPage() {
             Items Ordered
           </h2>
           <div className="space-y-3">
-            {order.items.map((item, i) => (
+            {order.items?.map((item, i) => (
               <div key={i} className="flex gap-3 items-center">
                 <img
                   src={item.image || "https://placehold.co/60x60"}

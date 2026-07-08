@@ -96,7 +96,7 @@ export default function AdminProducts() {
   const handleFileChange = (e) => {
     const selected = Array.from(e.target.files);
     setFiles(selected);
-    setPreviews(selected.map((f) => URL.createObjectURL(f)));
+    setPreviews(selected?.map((f) => URL.createObjectURL(f)));
   };
 
   const handleSubmit = async (e) => {
@@ -159,7 +159,7 @@ export default function AdminProducts() {
           className="border border-zinc-200 rounded-xl px-3 py-2.5 text-sm bg-white outline-none text-zinc-700"
         >
           <option value="">All Categories</option>
-          {categories.map((c) => (
+          {categories?.map((c) => (
             <option key={c._id} value={c._id}>
               {c.name}
             </option>
@@ -183,7 +183,7 @@ export default function AdminProducts() {
                       "Stock",
                       "Status",
                       "",
-                    ].map((h) => (
+                    ]?.map((h) => (
                       <th
                         key={h}
                         className="text-left px-5 py-3.5 text-xs font-semibold text-zinc-400 uppercase tracking-wider"
@@ -204,7 +204,7 @@ export default function AdminProducts() {
                       </td>
                     </tr>
                   ) : (
-                    items.map((p) => (
+                    items?.map((p) => (
                       <tr
                         key={p._id}
                         className="hover:bg-zinc-50 transition-colors"
@@ -341,7 +341,7 @@ export default function AdminProducts() {
                     required
                   >
                     <option value="">Select category</option>
-                    {categories.map((c) => (
+                    {categories?.map((c) => (
                       <option key={c._id} value={c._id}>
                         {c.name}
                       </option>
@@ -370,7 +370,7 @@ export default function AdminProducts() {
                     Current Images
                   </label>
                   <div className="flex gap-2 flex-wrap">
-                    {editProduct.images.map((img) => (
+                    {editProduct.images?.map((img) => (
                       <div key={img.public_id} className="relative">
                         <img
                           src={img.url}
@@ -423,7 +423,7 @@ export default function AdminProducts() {
                 </button>
                 {previews?.length > 0 && (
                   <div className="flex gap-2 mt-2 flex-wrap">
-                    {previews.map((src, i) => (
+                    {previews?.map((src, i) => (
                       <img
                         key={i}
                         src={src}

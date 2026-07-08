@@ -57,7 +57,7 @@ export default function AdminOrders() {
           className="border border-zinc-200 rounded-xl px-3 py-2.5 text-sm bg-white outline-none text-zinc-700"
         >
           <option value="">All Statuses</option>
-          {STATUS_OPTIONS.map((s) => (
+          {STATUS_OPTIONS?.map((s) => (
             <option key={s} value={s}>
               {s}
             </option>
@@ -83,7 +83,7 @@ export default function AdminOrders() {
                       "Status",
                       "Date",
                       "",
-                    ].map((h) => (
+                    ]?.map((h) => (
                       <th
                         key={h}
                         className="text-left px-5 py-3.5 text-xs font-semibold text-zinc-400 uppercase tracking-wider"
@@ -104,7 +104,7 @@ export default function AdminOrders() {
                       </td>
                     </tr>
                   ) : (
-                    orders.map((order) => (
+                    orders?.map((order) => (
                       <tr
                         key={order?._id}
                         className="hover:bg-zinc-50 transition-colors"
@@ -141,7 +141,7 @@ export default function AdminOrders() {
                             }
                             className={`text-xs font-semibold px-2.5 py-1 rounded-xl border outline-none cursor-pointer ${STATUS_STYLES[order.orderStatus]}`}
                           >
-                            {STATUS_OPTIONS.map((s) => (
+                            {STATUS_OPTIONS?.map((s) => (
                               <option key={s} value={s}>
                                 {s}
                               </option>

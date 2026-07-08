@@ -83,7 +83,7 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-            {categories?.slice(0, 6).map((cat) => (
+            {categories?.slice(0, 6)?.map((cat) => (
               <Link
                 key={cat._id}
                 to={`/products?category=${cat._id}`}
@@ -130,8 +130,8 @@ export default function HomePage() {
             {loading
               ? Array(8)
                   .fill(0)
-                  .map((_, i) => <SkeletonCard key={i} />)
-              : products.map((p) => <ProductCard key={p._id} product={p} />)}
+                  ?.map((_, i) => <SkeletonCard key={i} />)
+              : products?.map((p) => <ProductCard key={p._id} product={p} />)}
           </div>
         </section>
       )}

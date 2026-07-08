@@ -72,7 +72,7 @@ export default function AdminOrderDetail() {
           <div className="bg-white rounded-2xl border border-zinc-200 p-6">
             <h2 className="text-sm font-bold text-zinc-900 mb-4">Items</h2>
             <div className="space-y-3">
-              {order.items.map((item, i) => (
+              {order.items?.map((item, i) => (
                 <div key={i} className="flex gap-3 items-center">
                   <img
                     src={item.image || "https://placehold.co/60x60"}
@@ -113,7 +113,7 @@ export default function AdminOrderDetail() {
                 }}
               />
               <div className="space-y-5">
-                {ORDER_STEPS.map((step, i) => {
+                {ORDER_STEPS?.map((step, i) => {
                   const done = i <= currentStepIndex;
                   const histEntry = order.statusHistory?.find(
                     (h) => h.status === step,
@@ -159,7 +159,7 @@ export default function AdminOrderDetail() {
               Update Status
             </h2>
             <div className="space-y-1.5">
-              {ORDER_STEPS.map((s) => (
+              {ORDER_STEPS?.map((s) => (
                 <button
                   key={s}
                   onClick={() => handleStatusChange(s)}

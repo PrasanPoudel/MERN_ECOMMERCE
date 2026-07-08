@@ -67,7 +67,7 @@ const CustomTooltip = ({ active, payload, label, prefix = "" }) => {
   return (
     <div className="bg-white border border-zinc-200 rounded-xl px-3 py-2 shadow-lg text-sm">
       <p className="font-semibold text-zinc-700 mb-1">{label}</p>
-      {payload.map((p) => (
+      {payload?.map((p) => (
         <p key={p.dataKey} className="text-zinc-900 font-bold">
           {prefix}
           {typeof p.value === "number" && prefix === "$"
@@ -94,7 +94,7 @@ export default function AdminDashboard() {
       </AdminLayout>
     );
 
-  const chartData = stats.monthlyRevenue.map((d) => ({
+  const chartData = stats.monthlyRevenue?.map((d) => ({
     month: MONTHS[d._id.month - 1],
     revenue: d.revenue,
     orders: d.orders,

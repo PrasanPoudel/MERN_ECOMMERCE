@@ -73,7 +73,7 @@ export default function ProductDetailPage() {
           </div>
           {product.images?.length > 1 && (
             <div className="flex gap-2 overflow-x-auto pb-1">
-              {product.images.map((img, i) => (
+              {product.images?.map((img, i) => (
                 <button
                   key={i}
                   onClick={() => setActiveImg(i)}

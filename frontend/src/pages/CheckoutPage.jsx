@@ -113,7 +113,7 @@ export default function CheckoutPage() {
 
       {/* Step indicator */}
       <div className="flex items-center justify-center mb-10 overflow-x-auto p-4">
-        {STEPS.map((s, i) => (
+        {STEPS?.map((s, i) => (
           <div key={s} className="flex items-center">
             <div className="flex items-center gap-2">
               <div
@@ -149,7 +149,7 @@ export default function CheckoutPage() {
                 Review Your Cart
               </h2>
               <div className="space-y-4">
-                {items.map((item) => (
+                {items?.map((item) => (
                   <div key={item._id} className="flex gap-3 items-center">
                     <img
                       src={
@@ -198,7 +198,7 @@ export default function CheckoutPage() {
                     Saved Addresses
                   </p>
                   <div className="space-y-2">
-                    {user.addresses.map((a) => (
+                    {user.addresses?.map((a) => (
                       <button
                         key={a._id}
                         type="button"
@@ -250,7 +250,7 @@ export default function CheckoutPage() {
               )}
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {ADDR_FIELDS.map(({ key, label, required, full }) => (
+                {ADDR_FIELDS?.map(({ key, label, required, full }) => (
                   <div key={key} className={full ? "sm:col-span-2" : ""}>
                     <label className="block text-xs font-semibold text-zinc-600 mb-1.5">
                       {label}
@@ -304,7 +304,7 @@ export default function CheckoutPage() {
                     icon: RiTruckLine,
                     desc: "Pay when you receive",
                   },
-                ].map(({ value, label, icon: Icon, desc }) => (
+                ]?.map(({ value, label, icon: Icon, desc }) => (
                   <label
                     key={value}
                     className={`flex items-center gap-4 border-2 rounded-2xl p-4 cursor-pointer transition-colors ${
@@ -368,7 +368,7 @@ export default function CheckoutPage() {
         <div className="bg-white rounded-2xl border border-zinc-200 p-6 h-fit">
           <h2 className="text-base font-bold text-zinc-900 mb-4">Summary</h2>
           <div className="space-y-2 text-sm text-zinc-500 mb-4">
-            {items.map((i) => (
+            {items?.map((i) => (
               <div key={i._id} className="flex justify-between gap-2">
                 <span className="truncate">
                   {i.product?.name} ×{i.quantity}

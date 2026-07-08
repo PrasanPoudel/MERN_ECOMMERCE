@@ -161,7 +161,7 @@ export default function AdminCategories() {
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
               {Array(6)
                 .fill(0)
-                .map((_, i) => (
+                ?.map((_, i) => (
                   <div
                     key={i}
                     className="bg-white rounded-2xl border border-zinc-200 overflow-hidden animate-pulse"
@@ -187,7 +187,7 @@ export default function AdminCategories() {
             </div>
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-              {categories.map((cat) => (
+              {categories?.map((cat) => (
                 <div
                   key={cat._id}
                   className="group bg-white rounded-2xl border border-zinc-200 overflow-hidden hover:border-zinc-300 hover:shadow-md transition-all"

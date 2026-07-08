@@ -41,7 +41,7 @@ export default function AdminCustomers() {
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-zinc-100">
-                    {["Customer", "Email", "Addresses", "Joined"].map((h) => (
+                    {["Customer", "Email", "Addresses", "Joined"]?.map((h) => (
                       <th
                         key={h}
                         className="text-left px-5 py-3.5 text-xs font-semibold text-zinc-400 uppercase tracking-wider"
@@ -52,7 +52,7 @@ export default function AdminCustomers() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-zinc-50">
-                  {customers.map((c) => (
+                  {customers?.map((c) => (
                     <tr
                       key={c._id}
                       className="hover:bg-zinc-50 transition-colors"

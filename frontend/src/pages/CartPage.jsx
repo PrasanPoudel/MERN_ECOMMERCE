@@ -57,7 +57,7 @@ export default function CartPage() {
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 space-y-3">
-            {items.map((item) => (
+            {items?.map((item) => (
               <div
                 key={item._id}
                 className="bg-white rounded-2xl border border-zinc-200 p-4 gap-4 flex items-center justify-center"
@@ -128,7 +128,7 @@ export default function CartPage() {
               Order Summary
             </h2>
             <div className="space-y-2 text-sm text-zinc-500 mb-4">
-              {items.map((i) => (
+              {items?.map((i) => (
                 <div key={i._id} className="flex justify-between gap-2">
                   <span className="truncate">
                     {i.product?.name} × {i.quantity}
