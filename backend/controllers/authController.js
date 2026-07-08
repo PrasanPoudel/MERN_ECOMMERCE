@@ -4,10 +4,19 @@ const User = require("../models/User");
 const Cart = require("../models/Cart");
 const Order = require("../models/Order");
 
-const generateToken = (id, role) =>
-  jwt.sign({ id, role }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRE,
-  });
+const generateToken = (user) =>
+  jwt.sign(
+    {
+      id: user._id,
+      role: user.role,
+      email: user.email,
+      name: user.name,
+    },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: process.env.JWT_EXPIRE,
+    },
+  );
 
 // @desc  Register customer
 // @route POST /api/auth/signup
@@ -19,7 +28,7 @@ exports.signup = async (req, res) => {
     return res.status(400).json({ message: "Email already registered" });
 
   const user = await User.create({ name, email, password });
-  const token = generateToken(user._id, user.role);
+  const token = generateToken(user);
 
   res.status(201).json({
     token,
@@ -41,7 +50,7 @@ exports.login = async (req, res) => {
   if (!user || !(await user.matchPassword(password)))
     return res.status(401).json({ message: "Invalid email or password" });
 
-  const token = generateToken(user._id, user.role);
+  const token = generateToken(user);
   res.json({
     token,
     user: {
