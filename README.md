@@ -55,7 +55,7 @@ cd MERN_ECOMMERCE
 
 ```dotenv
 PORT=5000
-MONGO_URI=mongodb://localhost:27017/ecommerce
+MONGO_URI=mongodb://localhost:27017
 JWT_SECRET=your_super_secret_jwt_key_change_in_production
 JWT_EXPIRE=7d
 
@@ -63,10 +63,6 @@ JWT_EXPIRE=7d
 CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
 CLOUDINARY_API_KEY=your_cloudinary_api_key
 CLOUDINARY_API_SECRET=your_cloudinary_api_secret
-
-ADMIN_EMAIL=admin_email
-ADMIN_PASSWORD=admin_password
-ADMIN_NAME=Admin User
 
 NODE_ENV=development
 ```
