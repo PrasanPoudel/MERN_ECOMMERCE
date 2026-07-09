@@ -8,7 +8,7 @@ import ProductFilters from "../components/product/ProductFilters";
 import SkeletonCard from "../components/common/SkeletonCard";
 import Pagination from "../components/common/Pagination";
 import Breadcrumb from "../components/common/Breadcrumb";
-import { RiEqualizerLine, RiCloseLine } from "react-icons/ri";
+import { RiEqualizerLine, RiCloseLine, RiSearchLine } from "react-icons/ri";
 
 const SORT_OPTIONS = [
   { value: "newest", label: "Newest" },
@@ -19,7 +19,7 @@ const SORT_OPTIONS = [
 
 export default function ProductsPage() {
   const dispatch = useDispatch();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { items, loading, total, pages, page } = useSelector((s) => s.products);
   const [showFilters, setShowFilters] = useState(false);
 
@@ -63,18 +63,45 @@ export default function ProductsPage() {
   const handleFilterChange = (updates) =>
     setFilters((prev) => ({ ...prev, ...updates }));
 
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    const params = new URLSearchParams(searchParams);
+    if (value.trim()) params.set("search", value.trim());
+    else params.delete("search");
+    params.delete("page");
+    setSearchParams(params);
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
       <Breadcrumb
         items={[{ label: "Home", href: "/" }, { label: "Products" }]}
       />
 
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col items-start gap-2 sm:gap-0 sm:flex-row sm:items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold text-zinc-900">All Products</h1>
           <p className="text-sm text-zinc-400 mt-0.5">{total} products</p>
         </div>
+          <div className="flex sm:hidden w-full items-center bg-white border border-zinc-300 rounded-xl px-3 gap-2 focus-within:ring-1 transition-all">
+            <RiSearchLine size={16} className="text-zinc-400 shrink-0" />
+            <input
+              value={filters.search}
+              onChange={handleSearchChange}
+              placeholder="Search products..."
+              className="bg-transparent py-2 text-sm outline-none text-zinc-800 placeholder:text-zinc-400 w-44"
+            />
+          </div>
         <div className="flex items-center gap-2">
+          <div className="hidden sm:flex items-center bg-white border border-zinc-300 rounded-xl px-3 gap-2 focus-within:ring-1 transition-all">
+            <RiSearchLine size={16} className="text-zinc-400 shrink-0" />
+            <input
+              value={filters.search}
+              onChange={handleSearchChange}
+              placeholder="Search products..."
+              className="bg-transparent py-2 text-sm outline-none text-zinc-800 placeholder:text-zinc-400 w-44"
+            />
+          </div>
           <select
             value={filters.sort}
             onChange={(e) => handleFilterChange({ sort: e.target.value })}
@@ -102,12 +129,12 @@ export default function ProductsPage() {
 
       <div className="flex gap-6">
         <aside
-          className={`${showFilters ? "block" : "hidden"} md:block w-full md:w-56 shrink-0`}
+          className={`${showFilters ? "block" : "hidden"} md:block w-full md:w-56 shrink-0 z-100`}
         >
           <ProductFilters filters={filters} onChange={handleFilterChange} />
         </aside>
 
-        <div className="flex-1 min-w-0">
+        <div className={`${showFilters ? "hidden" : "flex-1 min-w-0"}`}>
           {loading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {Array(9)
@@ -123,6 +150,8 @@ export default function ProductsPage() {
               </div>
               <p className="text-base font-semibold text-zinc-700">
                 No products found
+                <br />
+                {searchParams.get("search") && `No results for "${searchParams.get("search")}"`}
               </p>
               <p className="text-sm text-zinc-400 mt-1">
                 Try adjusting your filters

@@ -7,7 +7,6 @@ import {
   RiUserLine,
   RiMenuLine,
   RiCloseLine,
-  RiSearchLine,
   RiLogoutBoxLine,
   RiDashboardLine,
   RiShoppingCartLine,
@@ -23,17 +22,9 @@ export default function Navbar() {
   const { items } = useSelector((s) => s.cart);
   const [menuOpen, setMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
-  const [search, setSearch] = useState("");
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
 
   const cartCount = items.reduce((sum, i) => sum + i.quantity, 0);
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (search.trim())
-      navigate(`/products?search=${encodeURIComponent(search.trim())}`);
-    setMenuOpen(false);
-  };
 
   const handleLogout = () => {
     setShowLogoutConfirm(false);
@@ -50,21 +41,6 @@ export default function Navbar() {
         >
           Zentro
         </Link>
-
-        <form
-          onSubmit={handleSearch}
-          className="flex-1 hidden md:flex max-w-sm"
-        >
-          <div className="flex w-full items-center bg-zinc-100 rounded-xl px-3 gap-2 focus-within:bg-white focus-within:ring-1 focus-within:ring-zinc-300 transition-all">
-            <RiSearchLine className="text-zinc-400 shrink-0" size={16} />
-            <input
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search products..."
-              className="flex-1 bg-transparent py-2 text-sm outline-none text-zinc-800 placeholder:text-zinc-400"
-            />
-          </div>
-        </form>
 
         <div className="hidden md:flex items-center gap-1 ml-auto">
           {user ? (
@@ -184,18 +160,6 @@ export default function Navbar() {
 
       {menuOpen && (
         <div className="md:hidden bg-white border-t border-zinc-100 px-4 py-4 flex flex-col gap-1">
-          <form
-            onSubmit={handleSearch}
-            className="flex items-center bg-zinc-100 rounded-xl px-3 gap-2 mb-2"
-          >
-            <RiSearchLine className="text-zinc-400" size={16} />
-            <input
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search..."
-              className="flex-1 bg-transparent py-2.5 text-sm outline-none"
-            />
-          </form>
           {user ? (
             <>
               {user.role === "admin" ? (
