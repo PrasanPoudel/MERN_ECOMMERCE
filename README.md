@@ -23,7 +23,7 @@ Note: Please be aware that Render's free tier will automatically shut down after
 ## Demo User Logins
 
 - **Live Admin Dashboard Login:**:
-  - Email: demo_admin@zentro.com
+  - Email: admin@zentro.com
   - Password: Password123
 
 - **Live Customer Logins:**:
