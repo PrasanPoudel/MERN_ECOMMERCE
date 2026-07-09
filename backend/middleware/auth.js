@@ -36,7 +36,7 @@ const adminOnly = (req, res, next) => {
 };
 
 const notForDemoAdmin = (req, res, next) => {
-  if (req.user?.email === "demo_admin@zentro.com")
+  if (req.user?.email === "admin@zentro.com")
     return res
       .status(403)
       .json({ message: "Demo admin is not allowed to perform this action" });

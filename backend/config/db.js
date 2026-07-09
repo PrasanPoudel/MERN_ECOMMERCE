@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const User = require("../models/User");
 
-const seedAdminUsers = async () => {
-  const adminUsers = [
+const seedUsersFunction = async () => {
+  const seedUsers = [
     {
       name: "Prasan Poudel",
       email: "prasanpoudel_admin@zentro.com",
@@ -11,17 +11,24 @@ const seedAdminUsers = async () => {
     },
     {
       name: "Demo Admin",
-      email: "demo_admin@zentro.com",
+      email: "admin@zentro.com",
       password: "Password123",
       role: "admin",
     },
+    {
+      name: "Demo Customer",
+      email: "customer@zentro.com",
+      password: "Password123",
+      role: "customer",
+      addresses: [],
+    }
   ];
 
-  for (const adminUser of adminUsers) {
-    const existingUser = await User.findOne({ email: adminUser.email });
+  for (const user of seedUsers) {
+    const existingUser = await User.findOne({ email: user.email });
     if (!existingUser) {
-      await User.create(adminUser);
-      console.log(`Seeded admin user: ${adminUser.email}`);
+      await User.create(user);
+      console.log(`Seeded user: ${user.email}`);
     }
   }
 };
@@ -32,7 +39,7 @@ const connectDB = async () => {
   });
   console.log(`MongoDB Connected: ${conn.connection.host}`);
 
-  await seedAdminUsers();
+  await seedUsersFunction();
 };
 
 module.exports = connectDB;
