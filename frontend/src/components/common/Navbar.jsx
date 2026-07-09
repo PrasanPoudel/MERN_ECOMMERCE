@@ -202,9 +202,9 @@ export default function Navbar() {
                     <RiShoppingCartLine size={16} /> Cart{" "}
                     {cartCount > 0 && `(${cartCount})`}
                   </NavLink>
-                  <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-2 space-y-1">
-                    <div className="px-2 py-1">
-                      <p className="text-sm font-semibold text-zinc-900">
+                  <div className="rounded-xl mt-4 border border-zinc-200 p-2 space-y-1">
+                    <div className="px-2 py-1 bg-white">
+                      <p className="font-semibold text-zinc-900">
                         {user.name}
                       </p>
                       <p className="text-xs text-zinc-500 truncate">
