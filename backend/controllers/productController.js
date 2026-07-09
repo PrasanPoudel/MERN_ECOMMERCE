@@ -7,7 +7,11 @@ exports.getProducts = async (req, res) => {
 
   const query = {};
 
-  if (search) query.$text = { $search: search };
+  if (search) {
+    const escaped = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(escaped, 'i');
+    query.$or = [{ name: regex }];
+  }
   if (category) query.category = category;
   const priceFilter = {};
   if (minPrice) priceFilter.$gte = Number(minPrice);
